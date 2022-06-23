@@ -1,0 +1,12 @@
+.lists {
+  list-style: none;
+  width: fit-content;
+  background: #ccc;
+  padding: 20px;
+}
+.lists li {
+  padding: 12px;
+  width: 200px;
+  margin: 8px 0;
+  background: #eee;
+}

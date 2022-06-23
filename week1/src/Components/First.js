@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
 
-const First = ({ num = 0 }) => {
+const First = ({ num }) => {
   //js구간
   const [state, setState] = useState(0);
+  const state1 = state + 1;
+  console.log("state1: ", state1);
   const ref = useRef(0);
   let variable = 0;
   const addVar = () => {
@@ -11,6 +13,7 @@ const First = ({ num = 0 }) => {
   };
   const addRef = () => {
     ref.current++;
+    console.log(ref.current);
   };
   return (
     <div>
@@ -21,9 +24,16 @@ const First = ({ num = 0 }) => {
         <li>variable: {variable}</li>
       </ul>
       <button onClick={() => num++}>props</button>
-      <button onClick={() => setState((prev) => prev + 1)}>state</button>
+      <button
+        onClick={() => {
+          setState(state + 1);
+        }}
+      >
+        state
+      </button>
       <button onClick={addRef}>ref</button>
       <button onClick={addVar}>variable</button>
+      {state1}
     </div>
   );
 };

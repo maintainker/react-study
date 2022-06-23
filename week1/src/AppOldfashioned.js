@@ -7,7 +7,6 @@ function App() {
     "div입니다."
   );
 }
-
 export default App;
 
 // 감싸인 요소로 해야하는 이유는 createElement라는 함수로 변형시켜야 하기때문입니다.

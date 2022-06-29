@@ -1,31 +1,33 @@
 import { useEffect, useLayoutEffect, useState } from "react";
+import Display1 from "./components/Display";
+import Display2 from "./components/Display2";
+import Input1 from "./components/Input1";
+import Input2 from "./components/Input2";
+import Layout from "./components/Layout";
 
 function App() {
-  // const [loading, setLoading] = useState(false);
   const [name1, setName1] = useState("못생긴 룰루");
-  const [name2, setName2] = useState("못생긴 기어");
+  const [name2, setName2] = useState("rkt기어");
   useEffect(() => {
     const changeName1 = async () => {
-      await setTimeout(() => {
-        console.log("change Name1");
-        setName1("이쁜 룰루");
-      }, 1000);
+      await new Promise((resolve) => {
+        resolve();
+      });
+      setName1("이쁜 룰루");
     };
     changeName1();
-  }, []);
-  useLayoutEffect(() => {
-    const chaneName2 = async () => {
-      await setTimeout(() => {
-        console.log("change Name1");
-        setName2("잘생기고 스마트한 기어");
-      }, 1000);
-    };
-    chaneName2();
   }, []);
   return (
     <div className="App">
       <div>{name1}</div>
-      <div>{name2}</div>
+      <Layout>
+        <Input1 name={name2} setName={setName2} />
+        <Display1 name={name2} />
+      </Layout>
+      <Layout>
+        <Input2 />
+        <Display2 name={name2} />
+      </Layout>
     </div>
   );
 }

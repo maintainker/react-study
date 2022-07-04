@@ -5,11 +5,11 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action?.type) {
     case "increase":
-      return { ...state, count: state.count + 1 };
+      return { count: state.count + 1 };
     case "decrease":
-      return { ...state, count: state.count + 1 };
+      return { count: state.count + 1 };
     case "reset":
-      return { ...state, count: 1 };
+      return { count: 1 };
     default:
       return state;
   }

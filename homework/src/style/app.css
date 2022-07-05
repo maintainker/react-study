@@ -1,12 +1,28 @@
 .lists {
   list-style: none;
-  width: fit-content;
+  width: 100%;
   background: #ccc;
-  padding: 20px;
+  box-sizing: border-box;
 }
 .lists li {
   padding: 12px;
-  width: 200px;
+  width: 100%;
   margin: 8px 0;
-  background: #eee;
+  background: #f4f1de;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lists li.colorset_1 {
+  background: #e07a5f;
+}
+.lists li.colorset_2 {
+  background: #3d405b;
+}
+.lists li.colorset_3 {
+  background: #81b29a;
+}
+.lists li.colorset_4 {
+  background: #f2cc8f;
 }

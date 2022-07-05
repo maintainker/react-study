@@ -16,9 +16,9 @@ const ButtonSection = ({ alertMessage }) => {
   return (
     <section>
       <button className="dont-use">사용불가</button>
-      <button className="dont-use" onClick={handleClick2()}>
+      {/* <button className="dont-use" onClick={handleClick2()}>
         사용불가
-      </button>
+      </button> */}
       <button className="can-use" ref={buttonRef}>
         사용가능
       </button>

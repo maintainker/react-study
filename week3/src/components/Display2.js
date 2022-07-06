@@ -1,11 +1,10 @@
-import { useReducer } from "react";
-import changeInput from "../reducer/changeInput";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
-const Display2 = ({ name }) => {
-  const [state] = useReducer(changeInput, {
-    name: "",
-  });
-  return <div>display2: {state.name}</div>;
+const Display2 = () => {
+  const { value } = useContext(UserContext);
+  console.log(value);
+  return <div>display2: {value}</div>;
 };
 
 export default Display2;

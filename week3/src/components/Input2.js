@@ -1,16 +1,11 @@
-import { useReducer, useState } from "react";
-import changeInput from "../reducer/changeInput";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
-const Input2 = ({ name, setName }) => {
-  const [state, dispatch] = useReducer(changeInput, {
-    name: "",
-  });
+const Input2 = () => {
+  const { value, setValue } = useContext(UserContext);
   return (
     <>
-      <input
-        value={state.name}
-        onChange={(e) => dispatch({ name: "name", value: e.target.value })}
-      />
+      <input value={value} onChange={(e) => setValue(e.target.value)} />
     </>
   );
 };

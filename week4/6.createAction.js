@@ -40,13 +40,13 @@ const createAction = (type, payload = {}) => {
   };
 };
 
-const incre = () => redux.dispatch({ type: "increase" });
-const reset = () => redux.dispatch({ type: "increase" });
+const incre = () => redux.dispatch({ type: COUNT_INCREASE });
+const reset = () => redux.dispatch({ type: COUNT_RESET });
 
 console.log(redux.getState());
-redux.dispatch({ type: "increase" });
-redux.dispatch(createAction("increase"));
-redux.dispatch(createAction("reset"));
+redux.dispatch({ type: COUNT_INCREASE });
+redux.dispatch(createAction(COUNT_INCREASE));
+redux.dispatch(createAction(COUNT_RESET));
 incre();
 reset();
 incre();

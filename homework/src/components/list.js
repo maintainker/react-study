@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { RemoveTodo } from "../redux/slices/todosSlice";
+import { RemoveTodo, ToggleTodo } from "../redux/slices/todosSlice";
 
 /**
  * item {
@@ -13,18 +12,16 @@ import { RemoveTodo } from "../redux/slices/todosSlice";
  */
 
 const ListItem = ({ item, cardIdx }) => {
-  const [colorIdx, setColorIdx] = useState(0);
   const dispatch = useDispatch();
   const removeItemBox = (e) => {
     e.stopPropagation();
-    console.log("test");
     dispatch(RemoveTodo({ cardIdx, itemIdx: item.id }));
   };
+  const selectItem = () => {
+    dispatch(ToggleTodo({ cardIdx, itemIdx: item.id }));
+  };
   return (
-    <li
-      className={`colorset_${colorIdx}`}
-      onClick={() => setColorIdx((colorIdx + 1) % 5)}
-    >
+    <li className={item.isSelected ? `colorset_1` : ""} onClick={selectItem}>
       <span>{item.label}</span>
       <button onClick={removeItemBox}>삭제</button>
     </li>

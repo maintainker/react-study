@@ -59,6 +59,7 @@ const todosSlice = createSlice({
       });
     },
     ToggleTodo: (state, action) => {
+      let willRemove = null;
       state.todos = state.todos.map((el, cardIdx) => {
         if (el.id !== action.payload.cardIdx) {
           return el;
@@ -66,11 +67,21 @@ const todosSlice = createSlice({
         return {
           ...el,
           items: el.items.map((itemEl, itemIdx) => {
+            let isSelected = false;
             if (itemEl.id !== action.payload.itemIdx) {
-              return itemEl;
+              return { ...itemEl, isSelected: false };
             }
-            if (itemEl.isSelected) {
+            if (state.selectedItem?.itemIdx === action.payload.itemIdx) {
               state.selectedItem = null;
+            } else if (state.selectedItem) {
+              willRemove = state.selectedItem;
+              state.selectedItem = {
+                itemIdx: action.payload.itemIdx,
+                itemIdxCount: itemIdx,
+                cardIdx: action.payload.cardIdx,
+                cardIdxCount: cardIdx,
+              };
+              isSelected = true;
             } else {
               state.selectedItem = {
                 itemIdx: action.payload.itemIdx,
@@ -78,14 +89,20 @@ const todosSlice = createSlice({
                 cardIdx: action.payload.cardIdx,
                 cardIdxCount: cardIdx,
               };
+              isSelected = true;
             }
             return {
               ...itemEl,
-              isSelected: !itemEl.isSelected,
+              isSelected,
             };
           }),
         };
       });
+      if (willRemove) {
+        state.todos[willRemove.cardIdxCount].items[
+          willRemove.itemIdxCount
+        ].isSelected = false;
+      }
     },
     MoveUpDownTodo: (state, action) => {
       // const newTodos = [
